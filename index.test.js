@@ -2,7 +2,8 @@ const {
     car1,
     car2,
     car3,
-    dealership
+    dealership,
+    customer
   } = require("./index");
 
 
@@ -45,17 +46,52 @@ describe('get dealership properties', () => {
         expect(actual).toBe(expected);
     });
 
-    test('can add a car to dealership stock', () => {
+    test('can add a car to dealership stock', () => { // adds another ford after can add a car to dealership stock test
         expected = 4;
         dealership.addCar(car1);
         actual = dealership.countStock();
         expect(actual).toBe(expected);
     });
 
-    // test('can get array of cars manufacturers', () => {
-    //     expected = "Ford";
-    //     let array = dealership.getCarsManufacturers();
-    //     actual = array[0];
-    //     expect(actual).toBe(expected);
-    // });
+    test('can get array of cars manufacturers', () => {
+        expected = "BMW";
+        let array = dealership.getCarsManufacturers();
+        actual = array[2];
+        expect(actual).toBe(expected);
+    });
+
+    test('can get car by manufacturer', () => {
+        expected = 1; 
+        let array = dealership.getCarsFromManu("BMW");
+        actual = array.length;
+        expect(actual).toBe(expected);
+    });
+
+    test('can get total value of cars in stock', () => {
+        expected = 70000; // adds another ford after can add a car to dealership stock test
+        actual = dealership.getValueOfStock();
+        expect(actual).toBe(expected);
+    });
+});  
+
+describe('get customer properties', () => { 
+    test('can get wallet', () => {
+      expected = 15000;
+      actual = customer.wallet;
+      expect(actual).toBe(expected);
+    });
+
+    test('can add car', () => {
+        expected = 1;
+        let cars = customer.buyCar(dealership, car1);
+        actual = cars.length;
+        expect(actual).toBe(expected);
+      });
+
+      test('can not buy car', () => {
+        expected = 1;
+        let cars = customer.buyCar(car3);
+        actual = cars.length;
+        expect(actual).toBe(expected);
+      });
 });  

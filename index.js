@@ -20,7 +20,9 @@ class Dealership {
     }; 
     // Add a car to stock
     addCar = (car) => {
-        this.stock.push(car);
+        if (this.capacity < this.stock) {
+            this.stock.push(car);
+        }
     };
     // Return an array containing each car's manufacturer
     getCarsManufacturers = () => {
@@ -40,6 +42,34 @@ class Dealership {
         arrMan = arr.filter((car) => car.manufacturer == manufacturer);
         return arrMan;
     };
+
+    // Find the total value of all the cars in stock
+    getValueOfStock = () => {
+        let total = this.stock;
+        let sum = [];
+        for (let i = 0; i < total.length; i++) {
+            sum.push(total[i].price);
+        }
+        let totalSum = sum.reduce((agg, val) => agg + val, 0);
+        return totalSum;
+    }
+
+}
+
+class Customer {
+    constructor(name, wallet) {
+        this.name = name;
+        this.wallet = wallet;
+        this.car = null;
+    }
+
+    buyCar = (dealership, car) => {
+        if (this.wallet > car.price) {
+            this.car = car;
+            let removedCar = dealership.stock.findIndex((element) => element == car);
+            dealership.stock.splice(removedCar, 1);
+        }
+    }
 }
 
 // new car variable
@@ -53,19 +83,14 @@ let carArray = [car1, car2, car3];
 // new dealership
 const dealership = new Dealership("ABC dealers", 10, carArray);
 
-const manus = dealership.getCarsManufacturers();
-console.log(manus);
+// new customer
+const customer = new Customer("John", 15000);
 
-const array = dealership.getCarsFromManu("Ford");
-console.log(array);
-
-
-// Find the total value of all the cars in stock
 
 module.exports = { 
     car1,
     car2,
     car3,
     dealership,
-    car4
+    customer
 };
