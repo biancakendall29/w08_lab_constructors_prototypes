@@ -4,17 +4,7 @@ class Car {
         this.price = price;
         this.engineType = engineType;
     }
-
-    // getters
-    getManufacturer = () => this.manufacturer;
-    getPrice = () => this.price;
-    getEngineType = () => this.engineType;
-    // setters
-    setManufacturer = (manufacturer) => this.manufacturer = manufacturer;
-    setPrice = (price) => this.price = price;
-    setEngineType = (engineType) => this.engineType = engineType;
-}
-
+}    
 
 class Dealership {
     constructor(name, capacity, stock) {
@@ -22,15 +12,6 @@ class Dealership {
         this.capacity = capacity;
         this.stock = stock;        
     }
-
-    // getters
-    getName = () => this.name;
-    getCapacity = () => this.capacity;
-    getStock = () => this.stock;
-    // setters
-    setName = (name) => this.name = name;
-    setCapacity = (capacity) => this.capacity = capacity;
-    setStock = (stock) => this.stock = stock; 
 
     // methods
     // Count the number of cars in stock  
@@ -54,8 +35,10 @@ class Dealership {
 
     // Find all the cars from a given manufacturer
     getCarsFromManu = (manufacturer) => {
-        let arr = this.stock.filter((car)=> car.getManufacturer === manufacturer);
-        return arr;
+        let arr = this.stock;
+        let arrMan = [];
+        arrMan = arr.filter((car) => car.manufacturer == manufacturer);
+        return arrMan;
     };
 }
 
@@ -69,15 +52,6 @@ let carArray = [car1, car2, car3];
 
 // new dealership
 const dealership = new Dealership("ABC dealers", 10, carArray);
-
-//console.log(dealership.getStock());
-
-console.log(car1.getManufacturer());
-
-let man = dealership.stock;
-console.log(man[1].manufacturer);
-
-console.log(dealership.countStock());
 
 const manus = dealership.getCarsManufacturers();
 console.log(manus);

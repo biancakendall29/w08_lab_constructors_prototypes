@@ -9,19 +9,19 @@ const {
 describe('get car properties', () => { 
     test('can get manufacturer', () => {
       expected = "Ford";
-      actual = car1.getManufacturer();
+      actual = car1.manufacturer;
       expect(actual).toBe(expected);
     });
 
     test('can get price', () => {
         expected = 20000;
-        actual = car2.getPrice();
+        actual = car2.price;
         expect(actual).toBe(expected);
       });
 
       test('can get engine type', () => {
         expected = "4-cylinder";
-        actual = car3.getEngineType();
+        actual = car3.engineType;
         expect(actual).toBe(expected);
       });
 });    
@@ -29,13 +29,13 @@ describe('get car properties', () => {
 describe('get dealership properties', () => { 
     test('can get name', () => {
       expected = "ABC dealers";
-      actual = dealership.getName();
+      actual = dealership.name;
       expect(actual).toBe(expected);
     });
 
     test('can get price', () => {
         expected = 10;
-        actual = dealership.getCapacity();
+        actual = dealership.capacity;
         expect(actual).toBe(expected);
       });
 
