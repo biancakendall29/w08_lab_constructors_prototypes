@@ -25,14 +25,12 @@ const Dealership = function(name, capacity, stock) {
     this.setName = (name) => _name = name;
     this.setCapacity = (capacity) => _capacity = capacity;
     this.setStock = (stock) => _stock = stock; 
-    // toString
-    // this.toString = () => {
-    //     return "Car {"
-    //         + "this.getmanufacturer = " + this.getManufacturer.toString()
-    //         + "this.getCapacity = " + this.getCapacity.toString()
-    //         + "this.getStock = " + this.getStock.toString()
-    //         + "}";
-    // }
+
+    // methods
+    // Count the number of cars in stock  
+    this.countStock = () => {
+        return stock.length;
+    }; 
 }
 
 // new car variable
@@ -44,9 +42,7 @@ const dealership = new Dealership("ABC dealers", 10, [car1, car2, car3]);
 
 console.log(car1.getManufacturer());
 
-// Count the number of cars in stock
-
-//const countStock = function(dealership) => dealership.getStock().length;
+console.log(dealership.countStock());
 
 // Add a car to stock
 // Return an array containing each car's manufacturer
