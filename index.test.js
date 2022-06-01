@@ -51,4 +51,11 @@ describe('get dealership properties', () => {
         actual = dealership.countStock();
         expect(actual).toBe(expected);
     });
+
+    // test('can get array of cars manufacturers', () => {
+    //     expected = "Ford";
+    //     let array = dealership.getCarsManufacturers();
+    //     actual = array[0];
+    //     expect(actual).toBe(expected);
+    // });
 });  

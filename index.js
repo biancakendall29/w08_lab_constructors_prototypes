@@ -35,6 +35,14 @@ const Dealership = function(name, capacity, stock) {
     this.addCar = (car) => {
         stock.push(car);
     };
+    // Return an array containing each car's manufacturer
+    this.getCarsManufacturers = () => {
+        let arr = [];
+        for (let car in stock) {
+            arr.push(car.getManufacturer);
+        }
+        return arr;
+    };
 }
 
 // new car variable
@@ -50,8 +58,9 @@ console.log(car1.getManufacturer());
 
 console.log(dealership.countStock());
 
+const manus = dealership.getCarsManufacturers();
+console.log(manus[1]);
 
-// Return an array containing each car's manufacturer
 // Find all the cars from a given manufacturer
 // Find the total value of all the cars in stock
 
