@@ -39,9 +39,16 @@ describe('get dealership properties', () => {
         expect(actual).toBe(expected);
       });
 
-      test('can count number of cars in stock', () => {
+    test('can count number of cars in stock', () => {
         expected = 3;
         actual = dealership.countStock();
         expect(actual).toBe(expected);
-      });
+    });
+
+    test('can add a car to dealership stock', () => {
+        expected = 4;
+        dealership.addCar(car1);
+        actual = dealership.countStock();
+        expect(actual).toBe(expected);
+    });
 });  

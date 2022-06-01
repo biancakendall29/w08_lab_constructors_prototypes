@@ -31,12 +31,18 @@ const Dealership = function(name, capacity, stock) {
     this.countStock = () => {
         return stock.length;
     }; 
+    // Add a car to stock
+    this.addCar = (car) => {
+        stock.push(car);
+    };
 }
 
 // new car variable
 const car1 = new Car("Ford", 10000, "2-cylinder");
 const car2 = new Car("VW", 20000, "4-cylinder");
 const car3 = new Car("BMW", 30000, "4-cylinder");
+const car4 = new Car("Volvo", 40000, "2-cylinder");
+
 // new dealership
 const dealership = new Dealership("ABC dealers", 10, [car1, car2, car3]);
 
@@ -44,7 +50,7 @@ console.log(car1.getManufacturer());
 
 console.log(dealership.countStock());
 
-// Add a car to stock
+
 // Return an array containing each car's manufacturer
 // Find all the cars from a given manufacturer
 // Find the total value of all the cars in stock
@@ -53,5 +59,6 @@ module.exports = {
     car1,
     car2,
     car3,
-    dealership
+    dealership,
+    car4
 };
