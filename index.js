@@ -1,46 +1,60 @@
-const Car = function(manufacturer, price, engineType) {
-    let _manufacturer = manufacturer;
-    let _price = price;
-    let _engineType = engineType;
+class Car {
+    constructor(manufacturer, price, engineType) {
+        this.manufacturer = manufacturer;
+        this.price = price;
+        this.engineType = engineType;
+    }
 
     // getters
-    this.getManufacturer = () => _manufacturer;
-    this.getPrice = () => _price;
-    this.getEngineType = () => engineType;
+    getManufacturer = () => this.manufacturer;
+    getPrice = () => this.price;
+    getEngineType = () => this.engineType;
     // setters
-    this.setManufacturer = (manufacturer) => _manufacturer = manufacturer;
-    this.setPrice = (price) => _price = price;
-    this.setEngineType = (engineType) => _engineType = engineType;
+    setManufacturer = (manufacturer) => this.manufacturer = manufacturer;
+    setPrice = (price) => this.price = price;
+    setEngineType = (engineType) => this.engineType = engineType;
 }
 
-const Dealership = function(name, capacity, stock) {
-    let _name = name;
-    let _capacity = capacity;
-    let _stock = stock;
+
+class Dealership {
+    constructor(name, capacity, stock) {
+        this.name = name;
+        this.capacity = capacity;
+        this.stock = stock;        
+    }
+
     // getters
-    this.getName = () => _name;
-    this.getCapacity = () => _capacity;
-    this.getStock = () => _stock;
+    getName = () => this.name;
+    getCapacity = () => this.capacity;
+    getStock = () => this.stock;
     // setters
-    this.setName = (name) => _name = name;
-    this.setCapacity = (capacity) => _capacity = capacity;
-    this.setStock = (stock) => _stock = stock; 
+    setName = (name) => this.name = name;
+    setCapacity = (capacity) => this.capacity = capacity;
+    setStock = (stock) => this.stock = stock; 
 
     // methods
     // Count the number of cars in stock  
-    this.countStock = () => {
-        return stock.length;
+    countStock = () => {
+        return this.stock.length;
     }; 
     // Add a car to stock
-    this.addCar = (car) => {
-        stock.push(car);
+    addCar = (car) => {
+        this.stock.push(car);
     };
     // Return an array containing each car's manufacturer
-    this.getCarsManufacturers = () => {
-        let arr = [];
-        for (let car in stock) {
-            arr.push(car.getManufacturer);
+    getCarsManufacturers = () => {
+        let arr = this.stock;
+        let arrMans = [];
+
+        for (let i = 0; i < arr.length; i++) {
+            arrMans.push(arr[i].manufacturer);
         }
+        return arrMans;
+    };
+
+    // Find all the cars from a given manufacturer
+    getCarsFromManu = (manufacturer) => {
+        let arr = this.stock.filter((car)=> car.getManufacturer === manufacturer);
         return arr;
     };
 }
@@ -51,17 +65,27 @@ const car2 = new Car("VW", 20000, "4-cylinder");
 const car3 = new Car("BMW", 30000, "4-cylinder");
 const car4 = new Car("Volvo", 40000, "2-cylinder");
 
+let carArray = [car1, car2, car3];
+
 // new dealership
-const dealership = new Dealership("ABC dealers", 10, [car1, car2, car3]);
+const dealership = new Dealership("ABC dealers", 10, carArray);
+
+//console.log(dealership.getStock());
 
 console.log(car1.getManufacturer());
+
+let man = dealership.stock;
+console.log(man[1].manufacturer);
 
 console.log(dealership.countStock());
 
 const manus = dealership.getCarsManufacturers();
-console.log(manus[1]);
+console.log(manus);
 
-// Find all the cars from a given manufacturer
+const array = dealership.getCarsFromManu("Ford");
+console.log(array);
+
+
 // Find the total value of all the cars in stock
 
 module.exports = { 
